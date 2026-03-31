@@ -18,4 +18,4 @@ Você verá no terminal que o servidor foi iniciado.
 Teste no navegador:
 http://127.0.0.1:5000/alunos
 Se tudo estiver correto, será exibido um JSON contendo os alunos criados.
-Observe também o terminal: Cada requisição realizada aparecerá registrada no log do servidor.
+Observe também o terminal: Cada requisição realizada aparecerá registrada no log do servidor!
