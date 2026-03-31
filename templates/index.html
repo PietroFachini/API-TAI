@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="post" id="Formulario">
+        <h1>Formulario teste</h1>
+        <p>Nome:</p>
+        <input type="text" id="nome" value="">
+        <p>idade</p>
+        <input type="number" id="idade" value=""> <br>
+        <button type="submit" value="Enviar">Enviar</button>
+    </form>
+</body>
+    <script>
+        var myJSON = JSON.stringify($("#Formulario").serializeArray());
+    </script>
+</html>

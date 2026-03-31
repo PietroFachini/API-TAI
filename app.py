@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask import request
 from aluno import Aluno
 
@@ -24,7 +24,11 @@ alunos.append(aluno2)
 def listar_alunos():
     return jsonify([aluno.to_dict() for aluno in alunos])
 
-@app.route("/alunos", methods=["POST"])
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route("/", methods=["POST"])
 def adicionar_aluno():
     dados = request.get_json()
     novo_aluno = Aluno(dados["nome"], dados["idade"])
