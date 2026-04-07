@@ -1,39 +1,25 @@
-from flask import Flask, jsonify, render_template
-from flask import request
+from flask import Flask, jsonify, request, render_template, redirect
 from aluno import Aluno
 
 app = Flask(__name__)
+
 alunos = []
 
-aluno1 = Aluno("João", 17)
-
-aluno1.adicionar_nota(6)
-aluno1.adicionar_nota(7)
-aluno1.adicionar_nota(8)
-
-aluno2 = Aluno("Maria", 16)
-
-aluno2.adicionar_nota(5)
-aluno2.adicionar_nota(6)
-aluno2.adicionar_nota(7)
-
-alunos.append(aluno1)
-alunos.append(aluno2)
+@app.route("/", methods=["GET"])
+def pagina_inicial():
+    return render_template("index.html", alunos=alunos)
 
 @app.route("/alunos", methods=["GET"])
 def listar_alunos():
     return jsonify([aluno.to_dict() for aluno in alunos])
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route("/", methods=["POST"])
+@app.route("/alunos", methods=["POST"])
 def adicionar_aluno():
-    dados = request.get_json()
-    novo_aluno = Aluno(dados["nome"], dados["idade"])
+    nome = request.form["nome"]
+    idade = int(request.form["idade"])
+    novo_aluno = Aluno(nome, idade)
     alunos.append(novo_aluno)
-    return jsonify(novo_aluno.to_dict()), 201
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)

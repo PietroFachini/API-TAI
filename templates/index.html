@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Alunos</title>
 </head>
 <body>
-    <form action="/" method="post" id="Formulario">
-        <h1>Formulario teste</h1>
-        <p>Nome:</p>
-        <input type="text" id="nome" value="">
-        <p>idade</p>
-        <input type="number" id="idade" value=""> <br>
-        <button type="submit" value="Enviar">Enviar</button>
-    </form>
+  <h1>Cadastro de Alunos</h1>
+  
+  <form method="POST" action="/alunos">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br><br>
+
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" name="idade" required><br><br>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+  
+  <hr>
+  
+  <h2>Lista de Alunos</h2>
+  <ul>
+    {% for aluno in alunos %}
+      <li>
+        {{ aluno.nome }} - {{ aluno.idade }} anos
+      </li>
+    {% endfor %}
+  </ul>
 </body>
-    <script>
-        var myJSON = JSON.stringify($("#Formulario").serializeArray());
-    </script>
 </html>
