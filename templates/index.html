@@ -20,13 +20,16 @@
   
   <hr>
   
-  <h2>Lista de Alunos</h2>
-  <ul>
-    {% for aluno in alunos %}
-      <li>
-        {{ aluno.nome }} - {{ aluno.idade }} anos
-      </li>
-    {% endfor %}
-  </ul>
+    <h2>Lista de Alunos</h2>
+    <ul>
+        {% for aluno in alunos %}
+        <li>
+            {{ aluno.nome }} - {{ aluno.idade }} anos
+            [<a href="/editar/{{ aluno.id }}">Editar</a>]
+            [<a href="/remover/{{ aluno.id }}"
+                onclick="return confirm('Tem certeza que deseja remover este aluno?')">Remover</a>]
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

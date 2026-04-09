@@ -1,8 +1,12 @@
 class Aluno:
+
+    contador = 1
+
     def __init__(self, nome, idade):
         self.nome = nome
         self.idade = idade
         self.notas = []
+        Aluno.contador += 1
 
     def adicionar_nota(self, nota):
         self.notas.append(nota)
